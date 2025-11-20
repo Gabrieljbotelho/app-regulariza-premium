@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Sparkles, AlertTriangle, CheckCircle2, Clock, TrendingUp } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 
-export function DiagnosisScreen() {
+export default function DiagnosisScreen() {
   const [analyzing, setAnalyzing] = useState(false);
   const [showResults, setShowResults] = useState(false);
 

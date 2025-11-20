@@ -3,10 +3,10 @@
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface WelcomeScreenProps {
-  onStart: () => void;
+  onNext: () => void;
 }
 
-export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
+export default function WelcomeScreen({ onNext }: WelcomeScreenProps) {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 pb-20">
       <div className="max-w-md w-full space-y-8 text-center">
@@ -49,7 +49,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
 
         {/* CTA Button */}
         <button
-          onClick={onStart}
+          onClick={onNext}
           className="w-full bg-[#00FF7F] text-[#0D0D0D] font-semibold py-4 px-8 rounded-xl hover:bg-[#00CC66] transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(0,255,127,0.3)] hover:shadow-[0_0_40px_rgba(0,255,127,0.5)] hover:scale-105"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >

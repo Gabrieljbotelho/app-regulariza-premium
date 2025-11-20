@@ -11,7 +11,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Regulariza - Destravar seu imóvel nunca foi tão fácil",
-  description: "Plataforma inteligente para regularização de imóveis com IA",
+  description: "Plataforma inteligente para regularização de imóveis com IA. Simplifique o processo de regularização da sua propriedade.",
+  keywords: "regularização de imóveis, documentação de imóveis, escritura, IPTU, usucapião",
+  authors: [{ name: "Regulariza" }],
+  openGraph: {
+    title: "Regulariza - Destravar seu imóvel nunca foi tão fácil",
+    description: "Plataforma inteligente para regularização de imóveis com IA",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -23,9 +30,8 @@ export default function RootLayout({
     <html lang="pt-BR">
       <head>
         <Script src="/lasy-bridge.js" strategy="beforeInteractive" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="theme-color" content="#0D0D0D" />
       </head>
       <body
         className={`${inter.variable} antialiased bg-[#0D0D0D] text-white min-h-screen`}

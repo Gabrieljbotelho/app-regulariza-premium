@@ -3,7 +3,7 @@
 import { FileText, Upload, CheckCircle2, AlertCircle, Download } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 
-export function DocumentsScreen() {
+export default function DocumentsScreen() {
   const documents = [
     { name: 'RG', uploaded: true, required: true, date: '10/01/2025' },
     { name: 'CPF', uploaded: true, required: true, date: '10/01/2025' },

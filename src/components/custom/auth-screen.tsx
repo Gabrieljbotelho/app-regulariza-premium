@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
 import { Mail, Lock, User, Phone, ArrowLeft } from 'lucide-react';
 
 interface AuthScreenProps {
@@ -87,27 +90,27 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
   return (
     <div className="min-h-screen bg-[#0D0D0D] flex flex-col">
       {/* Header */}
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-[#00FF7F] to-[#00CC66] rounded-xl flex items-center justify-center">
             <span className="text-black font-bold text-xl">R</span>
           </div>
-          <h1 className="text-2xl font-bold text-white">Regulariza</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white">Regulariza</h1>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 px-6 py-8">
+      <div className="flex-1 px-4 sm:px-6 py-6 sm:py-8">
         {isLogin ? (
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-2">Bem-vindo de volta</h2>
-            <p className="text-gray-400 mb-8">Entre para continuar sua jornada</p>
+          <div className="max-w-md mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Bem-vindo de volta</h2>
+            <p className="text-gray-400 mb-6 sm:mb-8">Entre para continuar sua jornada</p>
 
             <form onSubmit={handleLogin} className="space-y-4">
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                <Card className="bg-red-500/10 border-red-500/20 p-3">
                   <p className="text-red-500 text-sm">{error}</p>
-                </div>
+                </Card>
               )}
 
               <div>
@@ -116,11 +119,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="email"
                     value={loginData.email}
                     onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="seu@email.com"
                     required
                   />
@@ -133,37 +136,37 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="password"
                     value={loginData.password}
                     onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="••••••••"
                     required
                   />
                 </div>
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-[#00FF7F] to-[#00CC66] text-black font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-[#00FF7F] to-[#00CC66] text-black font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? 'Entrando...' : 'Entrar'}
-              </button>
+              </Button>
             </form>
 
             <div className="mt-6 text-center">
               <button
                 onClick={() => setIsLogin(false)}
-                className="text-[#00FF7F] hover:underline"
+                className="text-[#00FF7F] hover:underline text-sm sm:text-base"
               >
                 Não tem conta? Cadastre-se
               </button>
             </div>
           </div>
         ) : (
-          <div>
+          <div className="max-w-md mx-auto">
             <button
               onClick={() => setIsLogin(true)}
               className="flex items-center gap-2 text-gray-400 hover:text-white mb-6"
@@ -172,14 +175,14 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
               Voltar
             </button>
 
-            <h2 className="text-3xl font-bold text-white mb-2">Criar conta</h2>
-            <p className="text-gray-400 mb-8">Comece sua regularização agora</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Criar conta</h2>
+            <p className="text-gray-400 mb-6 sm:mb-8">Comece sua regularização agora</p>
 
             <form onSubmit={handleSignup} className="space-y-4">
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                <Card className="bg-red-500/10 border-red-500/20 p-3">
                   <p className="text-red-500 text-sm">{error}</p>
-                </div>
+                </Card>
               )}
 
               <div>
@@ -188,11 +191,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="text"
                     value={signupData.fullName}
                     onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="João Silva"
                     required
                   />
@@ -205,11 +208,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="email"
                     value={signupData.email}
                     onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="seu@email.com"
                     required
                   />
@@ -222,11 +225,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="tel"
                     value={signupData.phone}
                     onChange={(e) => setSignupData({ ...signupData, phone: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="(11) 99999-9999"
                   />
                 </div>
@@ -238,11 +241,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="password"
                     value={signupData.password}
                     onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="••••••••"
                     required
                     minLength={6}
@@ -256,11 +259,11 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
-                  <input
+                  <Input
                     type="password"
                     value={signupData.confirmPassword}
                     onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })}
-                    className="w-full bg-[#1A1A1A] border border-gray-800 rounded-lg pl-11 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00FF7F] focus:border-transparent"
+                    className="w-full bg-[#1A1A1A] border-gray-800 pl-11 text-white placeholder-gray-500 focus:ring-[#00FF7F] focus:border-[#00FF7F]"
                     placeholder="••••••••"
                     required
                     minLength={6}
@@ -268,19 +271,19 @@ const AuthScreen: React.FC<AuthScreenProps> = ({ onAuthSuccess }) => {
                 </div>
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-[#00FF7F] to-[#00CC66] text-black font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-[#00FF7F] to-[#00CC66] text-black font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 {loading ? 'Criando conta...' : 'Criar conta'}
-              </button>
+              </Button>
             </form>
 
             <div className="mt-6 text-center">
               <button
                 onClick={() => setIsLogin(true)}
-                className="text-[#00FF7F] hover:underline"
+                className="text-[#00FF7F] hover:underline text-sm sm:text-base"
               >
                 Já tem conta? Faça login
               </button>

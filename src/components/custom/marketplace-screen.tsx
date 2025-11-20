@@ -3,7 +3,7 @@
 import { Star, MapPin, BadgeCheck } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 
-export function MarketplaceScreen() {
+export default function MarketplaceScreen() {
   const professionals = [
     {
       name: 'Dr. Carlos Silva',

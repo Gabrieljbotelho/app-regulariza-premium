@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, Users, FileSearch, TrendingUp, Clock, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Users, FileSearch, TrendingUp, Clock, CheckCircle2, Play } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 import { Screen } from '@/lib/types';
 
@@ -8,7 +8,7 @@ interface DashboardScreenProps {
   onNavigate: (screen: Screen) => void;
 }
 
-export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
+export default function DashboardScreen({ onNavigate }: DashboardScreenProps) {
   return (
     <div className="min-h-screen px-6 py-8 pb-24">
       <div className="max-w-md mx-auto space-y-6">
@@ -21,6 +21,19 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
             Vamos regularizar seu imóvel hoje?
           </p>
         </div>
+
+        {/* Start Process Card */}
+        <PremiumCard glow onClick={() => onNavigate('need-selection')}>
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-gradient-to-br from-[#00FF7F] to-[#00CC66] rounded-xl flex items-center justify-center">
+              <Play className="w-7 h-7 text-[#0D0D0D]" />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-white">Iniciar novo processo</h3>
+              <p className="text-sm text-gray-400">Certidões, atos ou regularização</p>
+            </div>
+          </div>
+        </PremiumCard>
 
         {/* Status Card */}
         <PremiumCard glow className="bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D]">
@@ -80,14 +93,14 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
             </div>
           </PremiumCard>
 
-          <PremiumCard onClick={() => onNavigate('documents')}>
+          <PremiumCard onClick={() => onNavigate('orders')}>
             <div className="flex items-center gap-4">
               <div className="w-14 h-14 bg-[#2A2A2A] rounded-xl flex items-center justify-center">
                 <FileSearch className="w-7 h-7 text-[#00FF7F]" />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-white">Solicitar certidão</h3>
-                <p className="text-sm text-gray-400">Documentos necessários</p>
+                <h3 className="text-lg font-semibold text-white">Meus pedidos</h3>
+                <p className="text-sm text-gray-400">Acompanhe seus serviços</p>
               </div>
             </div>
           </PremiumCard>
@@ -101,7 +114,7 @@ export function DashboardScreen({ onNavigate }: DashboardScreenProps) {
           
           <div className="space-y-2">
             {[
-              { text: 'Documento "RG" enviado', time: '2h atrás', completed: true },
+              { text: 'Documento \"RG\" enviado', time: '2h atrás', completed: true },
               { text: 'Análise do topógrafo agendada', time: '1 dia atrás', completed: true },
               { text: 'Aguardando certidão do cartório', time: '3 dias atrás', completed: false },
             ].map((activity, index) => (

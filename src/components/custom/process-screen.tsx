@@ -3,7 +3,7 @@
 import { CheckCircle2, Circle, Clock, AlertCircle } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 
-export function ProcessScreen() {
+export default function ProcessScreen() {
   const steps = [
     { title: 'Análise inicial', description: 'Documentos recebidos e validados', completed: true, current: false },
     { title: 'Levantamento topográfico', description: 'Agendado para 15/01/2025', completed: false, current: true },

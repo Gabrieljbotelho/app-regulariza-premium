@@ -9,7 +9,7 @@ interface QuestionsScreenProps {
   onComplete: (data: { propertyType: PropertyType; problem: ProblemType }) => void;
 }
 
-export function QuestionsScreen({ onComplete }: QuestionsScreenProps) {
+export default function QuestionsScreen({ onComplete }: QuestionsScreenProps) {
   const [step, setStep] = useState(1);
   const [propertyType, setPropertyType] = useState<PropertyType | null>(null);
   const [problem, setProblem] = useState<ProblemType | null>(null);

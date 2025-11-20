@@ -3,7 +3,7 @@
 import { MessageCircle, Send, HelpCircle, Book, Phone } from 'lucide-react';
 import { PremiumCard } from './premium-card';
 
-export function HelpScreen() {
+export default function HelpScreen() {
   const faqs = [
     {
       question: 'Quanto tempo leva o processo?',
