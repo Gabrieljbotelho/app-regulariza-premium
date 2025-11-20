@@ -58,7 +58,9 @@ export default function OrdersScreen({ onNavigate }: OrdersScreenProps) {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('pt-BR');
+    // Corrigido: usar formato fixo para evitar hydration mismatch
+    const [year, month, day] = dateString.split('-');
+    return `${day}/${month}/${year}`;
   };
 
   return (

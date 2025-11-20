@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic';
+
 const OrdersScreen = dynamic(
   () => import('@/components/custom/orders-screen'),
   {
@@ -23,3 +25,7 @@ const PaymentScreen = dynamic(
     ),
   }
 );
+
+export default function Page() {
+  return <OrdersScreen />;
+}
